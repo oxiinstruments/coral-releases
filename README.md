@@ -1,0 +1,2 @@
+# coral-releases
+CORAL releases
