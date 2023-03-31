@@ -246,13 +246,15 @@ var app = new Vue({
       var self = this // assign self to 'this' before nested function calls...
 
 
-      fetch('https://gitlab.com/api/v4/projects/44093451/releases/permalink/latest')
+      fetch('https://api.github.com/repos/oxiinstruments/coral-releases/releases/latest')
         .then(response => response.json())
         .then(data => {
           // The JSON data is now available in the 'data' variable
           // console.log(data.name);
 
-          var srcurl = data.assets.links[0].url;
+          // var srcurl = data.assets[0].browser_download_url;
+          var tag_name = data.tag_name;
+          var srcurl = "/dfu-updater/coral-firmware/" + data.assets[0].name + "?" + tag_name;
           console.log("release: " + data.name);
           console.log("url: " + srcurl);
 
