@@ -1,0 +1,49 @@
+.info{
+    text-align: left;
+}
+
+table {
+  border-collapse: collapse;
+}
+
+table, th, td {
+    border: 1px solid white;
+}
+
+code.language-cpp{
+    color: white;
+}
+
+#readme{
+text-align: left;
+}
+
+.btn-es{
+    background-color: #C348B7;
+    color: white;
+}
+
+.app_body {
+    color: #232323;
+    background-color: #ffffff;
+}
+
+
+.app_column {
+    align-items: center;
+    justify-content: center;
+    color: #232323;
+    background-color: #f6f6f6;
+    padding: 10px;
+
+    border-radius: 15px;
+
+    margin: 5px;
+}
+
+.nested_list {
+    justify-content: left;
+    align-items: left;
+    margin: 20px;
+    text-align: left;
+}
