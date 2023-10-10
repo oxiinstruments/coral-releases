@@ -226,14 +226,14 @@ var device = null;
         let downloadButton = document.querySelector("#download");
         let uploadButton = document.querySelector("#upload");
         // let blinkButton = document.querySelector("#blink");
-        let latestButton = document.querySelector("#latest");
+        // let latestButton = document.querySelector("#download");
         let statusDisplay = document.querySelector("#status");
         let infoDisplay = document.querySelector("#usbInfo");
         let dfuDisplay = document.querySelector("#dfuInfo");
         let vidField = document.querySelector("#vid");
-        let interfaceDialog = document.querySelector("#interfaceDialog");
-        let interfaceForm = document.querySelector("#interfaceForm");
-        let interfaceSelectButton = document.querySelector("#selectInterface");
+        // let interfaceDialog = document.querySelector("#interfaceDialog");
+        // let interfaceForm = document.querySelector("#interfaceForm");
+        // let interfaceSelectButton = document.querySelector("#selectInterface");
 
         let searchParams = new URLSearchParams(window.location.search);
         let fromLandingPage = false;
@@ -274,7 +274,7 @@ var device = null;
         let dfuseStartAddressField = document.querySelector("#dfuseStartAddress");
         let dfuseUploadSizeField = document.querySelector("#dfuseUploadSize");
 
-        let firmwareFileField = document.querySelector("#firmwareFile");
+        // let firmwareFileField = document.querySelector("#firmwareFile");
         // let firmwareFile = null;
 
         let downloadLog = document.querySelector("#downloadLog");
@@ -295,9 +295,9 @@ var device = null;
             detachButton.disabled = true;
             uploadButton.disabled = true;
             // blinkButton.disabled = true;
-            latestButton.disabled = true;
+            // latestButton.disabled = true;
             downloadButton.disabled = true;
-            firmwareFileField.disabled = true;
+            // firmwareFileField.disabled = true;
         }
 
         function onUnexpectedDisconnect(event) {
@@ -342,7 +342,7 @@ var device = null;
                     if (!desc.CanUpload) {
                         uploadButton.disabled = true;
                         // blinkButton.disabled = true;
-                        latestButton.disabled = true;
+                        // latestButton.disabled = true;
                         dfuseUploadSizeField.disabled = true;
                     }
                     if (!desc.CanDnload) {
@@ -409,17 +409,17 @@ var device = null;
                 detachButton.disabled = false;
                 uploadButton.disabled = true;
                 // blinkButton.disabled = true;
-                latestButton.disabled = true;
+                // latestButton.disabled = true;
                 downloadButton.disabled = true;
-                firmwareFileField.disabled = true;
+                // firmwareFileField.disabled = true;
 	    } else {
                 // DFU
                 detachButton.disabled = true;
                 uploadButton.disabled = false;
                 // blinkButton.disabled = false;
-                latestButton.disabled = false;
+                // latestButton.disabled = false;
                 downloadButton.disabled = false;
-                firmwareFileField.disabled = false;
+                // firmwareFileField.disabled = false;
             }
 
             if (device.memoryInfo) {
@@ -542,6 +542,8 @@ var device = null;
                         }
                     }
                 ).catch(error => {
+                    console.log("error")
+                    console.log(error)
                     statusDisplay.textContent = error;
                 });
             }
@@ -617,50 +619,50 @@ var device = null;
         //     return false;
         // });
 
-        latestButton.addEventListener('click', async function(event) {
-            event.preventDefault();
-            event.stopPropagation();
-            if (!configForm.checkValidity()) {
-                configForm.reportValidity();
-                return false;
-            }
+        // latestButton.addEventListener('click', async function(event) {
+        //     event.preventDefault();
+        //     event.stopPropagation();
+        //     if (!configForm.checkValidity()) {
+        //         configForm.reportValidity();
+        //         return false;
+        //     }
 
-            if (device && bootloaderFirmwareFile != null) {
-                setLogContext(downloadLog);
-                clearLog(downloadLog);
-                latestButton.disabled = true;
-                try {
-                    let status = await device.getStatus();
-                    if (status.state == dfu.dfuERROR) {
-                        await device.clearStatus();
-                    }
-                } catch (error) {
-                    device.logWarning("Failed to clear status");
-                }
-                await device.do_download(transferSize, bootloaderFirmwareFile, manifestationTolerant).then(
-                    () => {
-                        logInfo("Done!");
-                        setLogContext(null);
-                        if (!manifestationTolerant) {
-                            device.waitDisconnected(5000).then(
-                                dev => {
-                                    onDisconnect();
-                                    device = null;
-                                },
-                                error => {
-                                    // It didn't reset and disconnect for some reason...
-                                    console.log("Device unexpectedly tolerated manifestation.");
-                                }
-                            );
-                        }
-                    },
-                    error => {
-                        logError(error);
-                        setLogContext(null);
-                    }
-                )
-            }
-        });
+        //     if (device && bootloaderFirmwareFile != null) {
+        //         setLogContext(downloadLog);
+        //         clearLog(downloadLog);
+        //         latestButton.disabled = true;
+        //         try {
+        //             let status = await device.getStatus();
+        //             if (status.state == dfu.dfuERROR) {
+        //                 await device.clearStatus();
+        //             }
+        //         } catch (error) {
+        //             device.logWarning("Failed to clear status");
+        //         }
+        //         await device.do_download(transferSize, bootloaderFirmwareFile, manifestationTolerant).then(
+        //             () => {
+        //                 logInfo("Done!");
+        //                 setLogContext(null);
+        //                 if (!manifestationTolerant) {
+        //                     device.waitDisconnected(5000).then(
+        //                         dev => {
+        //                             onDisconnect();
+        //                             device = null;
+        //                         },
+        //                         error => {
+        //                             // It didn't reset and disconnect for some reason...
+        //                             console.log("Device unexpectedly tolerated manifestation.");
+        //                         }
+        //                     );
+        //                 }
+        //             },
+        //             error => {
+        //                 logError(error);
+        //                 setLogContext(null);
+        //             }
+        //         )
+        //     }
+        // });
 
         // blinkButton.addEventListener('click', async function(event) {
         //     event.preventDefault();

@@ -15,10 +15,21 @@ code.language-cpp{
 }
 
 #readme{
-text-align: left;
+    text-align: left;
+    margin-left: auto;
+    margin-right: auto;
+    max-width: 50%; /* Adjust the maximum width as needed */
+}
+#readme h2{
+    text-align: center;
 }
 
 .btn-es{
+    background-color: #C348B7;
+    color: white;
+}
+
+#connect {
     background-color: #C348B7;
     color: white;
 }
@@ -41,9 +52,23 @@ text-align: left;
     margin: 5px;
 }
 
-.nested_list {
-    justify-content: left;
-    align-items: left;
-    margin: 20px;
-    text-align: left;
+#firmwareSelector {
+    font-size: 1.5em;
+    justify-content: center;
+    align-items: center;
+    /* margin: 20px; */
+    max-width: 50%;
+    text-align: center;
+    margin-left: auto;
+    margin-right: auto;
+    border: 2px #C348B7; /* Border with 2px thickness and blue color */
+    border-radius: 10px; /* Adjust border radius as needed */
+    padding: 5px; 
+
+    background-color: #C348B7;
+    color: white;
+}
+
+.log {
+    max-width: 50%;
 }
