@@ -185,10 +185,9 @@ var app = new Vue({
       <b-col align="center" class="app_column">
           <b-container>
               <!--b-row class="p-2">
-                      <legend>Upload the latest firmware</legend>
-                      <div><b-button variant="es" id="latest"  :disabled="no_device">Upload latest firmware!</b-button></div>
-
-                  </b-row-->
+                  <legend>Upload the latest firmware</legend>
+                  <div><b-button variant="es" id="latest"  :disabled="no_device">Upload latest firmware!</b-button></div>
+              </b-row-->
               <b-row class="p-2">
                   <legend>2. Select a firmware from the list</legend>
                   <b-form-select v-model="sel_example" id="firmwareSelector" required @change="programChanged">
@@ -220,10 +219,10 @@ var app = new Vue({
       </b-col>
   </b-row>
 
-  <!--b-row>
+  <b-row>
       <b-col align="center" class="app_column">
           <b-container align="center">
-              <p>Or select a file from your computer</p>
+              <p>Or select a .bin file from your computer</p>
               <b-row class="p-2">
                   <legend> </legend>
                   <b-form-file id="firmwareFile" v-model="firmwareFile" :state="Boolean(firmwareFile)"
@@ -232,7 +231,7 @@ var app = new Vue({
               </div>
           </b-container>
       </b-col>
-  </b-row-->
+  </b-row>
 </b-container>
     `,
   data: data,
@@ -293,7 +292,7 @@ var app = new Vue({
       // Launch another request with async function to load examples from the 
       // specified urls 
       // This will fill examples directly, and replace the importExamples/timeout situation.
-      var src_url =  FIRMWARE_URL + "/firmware_list.json" //need to strip out query string
+      var src_url =  FIRMWARE_URL + "/firmware_list.json?v=" + new Date().getTime(); //need to strip out query string
 
       var ext_raw = new XMLHttpRequest();
       ext_raw.open("GET", src_url, true);
@@ -333,7 +332,7 @@ var app = new Vue({
       var srcurl = FIRMWARE_URL
       //var expath = srcurl.substring(0, srcurl.lastIndexOf("/") +1).extend;
       var expath = srcurl.concat(self.sel_example.filepath)
-
+      console.log(self.sel_example.description);
       readServerFirmwareFile(expath).then(buffer => {
         firmwareFile = buffer
       })
