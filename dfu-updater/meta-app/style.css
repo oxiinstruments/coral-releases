@@ -1,0 +1,74 @@
+.info{
+    text-align: left;
+}
+
+table {
+  border-collapse: collapse;
+}
+
+table, th, td {
+    border: 1px solid white;
+}
+
+code.language-cpp{
+    color: white;
+}
+
+#readme{
+    text-align: left;
+    margin-left: auto;
+    margin-right: auto;
+    max-width: 50%; /* Adjust the maximum width as needed */
+}
+#readme h2{
+    text-align: center;
+}
+
+.btn-es{
+    background-color: #7E70C2;
+    color: white;
+}
+
+#connect {
+    background-color: #7E70C2;
+    color: white;
+}
+
+.app_body {
+    color: #232323;
+    background-color: #ffffff;
+}
+
+
+.app_column {
+    align-items: center;
+    justify-content: center;
+    color: #232323;
+    background-color: #f6f6f6;
+    /* padding: 10px; */
+
+    border-radius: 15px;
+
+    margin: 5px;
+}
+
+#firmwareSelector {
+    font-size: 1.5em;
+    justify-content: center;
+    align-items: center;
+    /* margin: 20px; */
+    max-width: 50%;
+    text-align: center;
+    margin-left: auto;
+    margin-right: auto;
+    border: 2px #7E70C2; /* Border with 2px thickness and blue color */
+    border-radius: 10px; /* Adjust border radius as needed */
+    padding: 5px; 
+
+    background-color: #7E70C2;
+    color: white;
+}
+
+.log {
+    max-width: 50%;
+}

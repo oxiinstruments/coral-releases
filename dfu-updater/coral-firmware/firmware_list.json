@@ -1,20 +1,26 @@
 [
     {
-        "name": "Stock firmware",
-        "filepath": "STOCK/CORAL_1_0_0.bin",
-        "description": "Stock firmware with 6 drums models combined into 3 engines: 2x Hihat, 2x Snare and 2x Bassdrum",
-        "url": "STOCK/README.md"
+        "name": "ACID + 3VCO + DRUMS",
+        "filepath": "ACID_3VCO/CORAL_ACID_3VCO_2_2.bin",
+        "description": "ACID + 3VCO + DRUMS",
+        "url": "ACID_3VCO/README.md"
     },
     {
-        "name": "Additive engine",
-        "filepath": "HARMO/CORAL_HARMO.bin",
-        "description": "Additive oscillator with 2 types of distortion. Hi-hat and Snare models are combined into one. Morph crossfades between them.",
-        "url": "HARMO/README.md"
+        "name": "NO DRUMS VERSION",
+        "filepath": "NO_DRUMS/CORAL_NO_DRUMS_2_2.bin",
+        "description": "No drums version",
+        "url": "NO_DRUMS/README.md"
     },
     {
-        "name": "ACID + Additive engines",
-        "filepath": "ACID/CORAL_ACID.bin",
-        "description": "Additive oscillator with 2 types of distortion and Acid engine.",
-        "url": "ACID/README.md"
+        "name": "DRUMS MODELS",
+        "filepath": "DRUMS/CORAL_DRUMS_2_2.bin",
+        "description": "Drums version",
+        "url": "DRUMS/README.md"
+    },
+    {
+        "name": "DUAL WAVETABLE (NO DRUMS)",
+        "filepath": "NO_DRUMS_DUAL_WAVETABLE/CORAL_WAVETABLE_DUAL_2_2.bin",
+        "description": "No drums with dual wavetable",
+        "url": "NO_DRUMS_DUAL_WAVETABLE/README.md"
     }
 ]

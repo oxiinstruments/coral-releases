@@ -1,0 +1,20 @@
+[
+    {
+        "name": "LOWER PITCH RISER + SIDECHAIN",
+        "filepath": "LOWER_RISER_SC/LOWER_RISER_SC_1_1.bin",
+        "description": "LOWER PITCH RISER + SIDECHAIN",
+        "url": "LOWER_RISER_SC/README.md"
+    },
+    {
+        "name": "STOCK FIRMWARE",
+        "filepath": "STOCK_FIRMWARE/STOCK_FIRMWARE_1_1.bin",
+        "description": "STOCK FIRMWARE",
+        "url": "STOCK_FIRMWARE/README.md"
+    },
+    {
+        "name": "RISER WITH DOWN NOISE SWEEP",
+        "filepath": "NOISE_DOWN_SWEEP/NOISE_DOWN_SWEEP_1_1.bin",
+        "description": "RISER WITH DOWN NOISE SWEEP",
+        "url": "NOISE_DOWN_SWEEP/README.md"
+    },
+]
