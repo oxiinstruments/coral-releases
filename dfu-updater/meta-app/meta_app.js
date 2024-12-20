@@ -184,9 +184,34 @@ var app = new Vue({
   <b-row align="center">
       <b-col align="center" class="app_column">
           <b-container>
-              <legend>2. Press program to upload the firmware</legend>
+              <!--b-row class="p-2">
+                  <legend>Upload the latest firmware</legend>
+                  <div><b-button variant="es" id="latest"  :disabled="no_device">Upload latest firmware!</b-button></div>
+              </b-row-->
+              <b-row class="p-2">
+                  <legend>2. Select a firmware from the list</legend>
+                  <b-form-select v-model="sel_example" id="firmwareSelector" required @change="programChanged">
+                      <template v-slot:first>
+                          <!--b-form-select-option :value="null" disabled>-- Example --</b-form-select-option-->
+                      </template>
+                      <b-form-select-option v-for="example in platformExamples" v-bind:key="example.name"
+                          :value="example">{{example.name}}</b-form-select-option>
+                  </b-form-select>
+              </b-row>
               <br>
-              <b-button id="download" variant='es' :disabled="no_device">Program</b-button>
+              <div>
+                  <div id="readme"></div>
+              </div>
+          </b-container>
+      </b-col>
+  </b-row>
+
+  <b-row align="center">
+      <b-col align="center" class="app_column">
+          <b-container>
+              <legend>3. Press program to upload the firmware</legend>
+              <br>
+              <b-button id="download" variant='es' :disabled="no_device || !sel_example"> Program</b-button>
               <br>
               <div class="log" id="downloadLog"></div>
               <br>
@@ -231,37 +256,32 @@ var app = new Vue({
   },
   methods: {
     importExamples() {
-      var self = this
+      // var self = this
       // const unique_platforms = [...new Set(data.map(obj => obj.platform))]
-      self.examples = data
+      // self.examples = data
       // self.platforms = unique_platforms
       // New code below:
       // Get Source list as data
-      var self = this // assign self to 'this' before nested function calls...
-      fetch('https://api.github.com/repos/oxiinstruments/meta-releases/releases/latest')
-        .then(response => response.json())
-        .then(data => {
-          // The JSON data is now available in the 'data' variable
-          // console.log(data.name);
-          // var srcurl = data.assets[0].browser_download_url;
-          var tag_name = data.tag_name;
-          var srcurl = "/dfu-updater/meta-firmware/" + data.assets[0].name + "?" + tag_name;
-          console.log("release: " + data.name);
-          console.log("url: " + srcurl);
+      // var self = this // assign self to 'this' before nested function calls...
+      // fetch('https://api.github.com/repos/oxiinstruments/meta-releases/releases/latest')
+      //   .then(response => response.json())
+      //   .then(data => {
+      //     // The JSON data is now available in the 'data' variable
+      //     // console.log(data.name);
+      //     // var srcurl = data.assets[0].browser_download_url;
+      //     var tag_name = data.tag_name;
+      //     var srcurl = "/dfu-updater/meta-firmware/" + data.assets[0].name + "?" + tag_name;
+      //     console.log("release: " + data.name);
+      //     console.log("url: " + srcurl);
 
-          readServerFirmwareFile(srcurl, false).then(buffer => {
-            firmwareFile = buffer
-          })
-        })
-        .catch(error => {
-          // Handle any errors that occur during the fetch request
-          console.error(error);
-        });
-
-
-
-
-/*
+      //     readServerFirmwareFile(srcurl, false).then(buffer => {
+      //       firmwareFile = buffer
+      //     })
+      //   })
+      //   .catch(error => {
+      //     // Handle any errors that occur during the fetch request
+      //     console.error(error);
+      //   });
       var self = this // assign self to 'this' before nested function calls...
       // Launch another request with async function to load examples from the 
       // specified urls 
@@ -291,11 +311,6 @@ var app = new Vue({
         }
       }
       ext_raw.send(null)
-*/
-      // var self = this
-      // const unique_platforms = [...new Set(data.map(obj => obj.platform))]
-      // self.examples = data
-      // self.platforms = unique_platforms
     },
     programChanged() {
       var self = this
